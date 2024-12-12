@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>致我最爱的人</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(45deg, #FFE4E1, #FFC0CB);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: '微软雅黑', sans-serif;
+        }
+        
+        .container {
+            width: 300px;
+            height: 500px;
+            position: relative;
+            border: 2px solid #FF69B4;
+            border-radius: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+            overflow: hidden;
+        }
+        
+        .heart-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            color: #FF0000;
+        }
+        
+        .content {
+            text-align: center;
+            margin-top: 60px;
+            color: #FF1493;
+        }
+        
+        .message {
+            margin: 20px 0;
+            font-size: 16px;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            color: #FF0000;
+            animation: float 4s linear infinite;
+            opacity: 0.6;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-20vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .title {
+            font-size: 24px;
+            color: #FF1493;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart-border">❤️❤️❤️❤️❤️</div>
+        <div class="content">
+            <div class="title">致我亲爱的老婆</div>
+            <div class="message" style="animation-delay: 0.5s">遇见你是我最大的幸福</div>
+            <div class="message" style="animation-delay: 1s">每一天醒来看到你</div>
+            <div class="message" style="animation-delay: 1.5s">都让我感恩生命中有你</div>
+            <div class="message" style="animation-delay: 2s">你的笑容是我最大的快乐</div>
+            <div class="message" style="animation-delay: 2.5s">我会一直陪在你身边</div>
+            <div class="message" style="animation-delay: 3s">永远爱你 ❤️</div>
+        </div>
+        <div class="floating-hearts"></div>
+    </div>
+
+    <script>
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            document.querySelector('.floating-hearts').appendChild(heart);
+            
+            heart.addEventListener('animationend', () => {
+                heart.remove();
+            });
+        }
+
+        setInterval(createFloatingHeart, 500);
+    </script>
+</body>
+</html>
